@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title {
+    font-size: 36px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+
+    will-change: filter;
+    transition: filter 400ms;
+    transition: transform 150ms;
+
+    &--content {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+
+    &:hover {
+        filter: drop-shadow(0 0 2em #61dafbaa);
+        transform: scale(1.05)
+    }
+}

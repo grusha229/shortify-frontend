@@ -1,0 +1,54 @@
+@import "../../helpers/styles/_colors.scss";
+
+.block {
+    display: flex;
+    flex-direction: row;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+
+    &--input {
+        font-size: 24px;
+        border: none;
+        color: $color-text-primary;
+        border-radius: 5px;
+        padding: 24px 32px;
+        margin-right: 10px;
+        transition: filter 400ms;
+        flex: 1;
+        z-index: 1;
+
+        &:focus {
+            filter: drop-shadow(0 0 2em #61dafbaa);
+            outline: none;
+        }
+    }
+
+    &--button {
+        font-size: 24px;
+        border: none;
+        color: $color-text-primary;
+        border-radius: 5px;
+        padding: 24px 32px;
+        transition: filter 400ms;
+        outline: none;
+        z-index: 2;
+
+        &:hover {
+            filter: drop-shadow(0 0 1.5em #61dafbaa);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            filter: drop-shadow(0 0 1em #61dafbbb);
+            outline: none;
+        }
+    }
+}

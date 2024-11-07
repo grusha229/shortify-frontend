@@ -1,13 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { useGetShortLinkMutation } from '../../services/links';
-import { ILinksApiModel, ILinksPayload } from '../../models/links';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { ILinksPayload } from '../../models/links';
+import style from './LinkForm.module.scss'
 
-export default function LinkForm() {
+export interface IProps {
+  /** Additional classes */
+  className?: string
+}
+
+export default function LinkForm({
+  className
+}: IProps) {
     // Инициализация useForm
     const { register, handleSubmit } = useForm<ILinksPayload>();
-    const links = useSelector((state: RootState) => state.links);
 
       // Мутация для обновления пользователя
     const [ getShortLink ] = useGetShortLinkMutation();
@@ -22,18 +27,26 @@ export default function LinkForm() {
       }
     };
 
+    const blockClassName = [style['block'], className].join(' ');
+
     return (
-      <form onSubmit={handleSubmit(handleSubmitLinkForm)}>
-        <div>
-          <label>Link</label>
-          <input {...register('url')} />
-        </div>
-        <button type="submit">Update</button>
-        {
-          links && links.links.map((link: ILinksApiModel) => (
-            <a href={link.short_url}>{link.short_url}</a>
-          ))
-        }
-      </form>
+      <div className={blockClassName}>
+        <form 
+           onSubmit={handleSubmit(handleSubmitLinkForm)}
+           className={style['form']}
+        >
+            <input
+                className={style['form--input']}
+                placeholder='Insert your link here'
+                {...register('url')}
+            />
+          <button 
+            className={style['form--button']} 
+            type="submit"
+          >
+            Shortify!
+          </button>
+        </form>
+      </div>
     )
 }

@@ -7,7 +7,12 @@ export interface ILinksState {
 }
 
 const initialState: ILinksState  = {
-  links: [],
+  links: [
+    {
+      short_url: 'http://localhost/link/caN3Bf',
+      original_url: 'https://example.com'
+    }
+  ],
 }
 
 const loadLinksFromLocalStorage = () : ILinksState => {
@@ -28,6 +33,7 @@ export const linksSlice = createSlice({
     builder.addMatcher(linksApi.endpoints.getShortLink.matchFulfilled,
     (state, action) => {
       state.links = state.links.concat(action.payload);
+      localStorage?.setItem('links', JSON.stringify(state.links));
     }); 
   }
 });

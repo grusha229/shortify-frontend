@@ -1,0 +1,10 @@
+.block {
+    margin-top: 24px;
+    overflow: hidden;
+
+    &--container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
