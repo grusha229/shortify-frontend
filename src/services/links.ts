@@ -5,7 +5,7 @@ import type { ILinksPayload } from '../models/links'
 // Define a service using a base URL and expected endpoints
 export const linksApi = createApi({
   reducerPath: 'links_api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost/link/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '/link/' }),
   endpoints: (builder) => ({
     getShortLink: builder.mutation({
         query: (payload: ILinksPayload) => ({
