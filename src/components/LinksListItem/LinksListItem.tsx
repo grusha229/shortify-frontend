@@ -83,10 +83,20 @@ export default function LinksListItem({
       </div>
       <div className={styles['link']}>
         <div className={styles['link--short']}>
-            <a href={short_url}>{readableShortUrl}</a>
+            <a
+              href={short_url}
+              target='_blank'
+            >
+              {readableShortUrl}
+            </a>
         </div>
         <div className={styles['link--original']}>
-            <a href={original_url}>{readableOriginalUrl}</a>
+            <a
+              href={original_url}
+              target='_blank'
+            >
+              {readableOriginalUrl}
+            </a>
         </div>
         <div className={styles['link--details']}>
           <Link to={detailedInfoLink}>Details</Link>
