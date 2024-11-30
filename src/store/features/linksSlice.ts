@@ -32,7 +32,7 @@ export const linksSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(linksApi.endpoints.getShortLink.matchFulfilled,
     (state, action) => {
-      state.links = state.links.concat(action.payload);
+      state.links = [action.payload, ...state.links];
       localStorage?.setItem('links', JSON.stringify(state.links));
     }); 
   }

@@ -1,10 +1,17 @@
+$gap: 24px;
+
 .block {
-    margin-top: 24px;
+    margin-top: $gap;
     overflow: hidden;
 
     &--container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        gap: $gap;
+    }
+
+    &--item {
+        // min-width: calc((100% - $gap) / 2);
+        box-sizing: border-box;
     }
 }

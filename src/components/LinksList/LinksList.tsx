@@ -12,9 +12,11 @@ export default function LinksList({ links } : IProps) {
             <div  className={styles['block--container']}>
                 {links.map((link) => (
                     <LinksListItem
+                        className={styles['block--item']}
                         short_url={link.short_url}
                         original_url={link.original_url}
-                        key={link.short_url}
+                        id={link.id}
+                        key={link.id}
                     />
                 ))}
             </div>

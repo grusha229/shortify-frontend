@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom';
 import styles from './LinkDetailsView.module.scss'
-import { getShortLinkById } from '../../utils/getLinkId';
-import removeProtocolFromUrl from '../../utils/removePrefix';
+import LinkDetails from '../../components/LinkDetails/LinkDetails';
 
 export default function LinkDetailsView() {
     const params = useParams();
-    const fullShortLink = getShortLinkById(params?.id as string);
-    const readableShortUrl = removeProtocolFromUrl(fullShortLink)
+    const linkId = params?.id || '';
+    // const fullShortLink = getShortLinkById(params?.id as string);
+    // const readableShortUrl = removeProtocolFromUrl(fullShortLink)
 
     return (
         <div className={styles['content']}>
             <h1 className={styles['title']}>Link stat</h1>
-            <a href={fullShortLink}>{readableShortUrl}</a>
+            <LinkDetails link_id={linkId} />
+            {/* <a href={fullShortLink}>{readableShortUrl}</a> */}
 
             <br/>
 

@@ -4,14 +4,17 @@ import copyIcon from '../../assets/icon--copy.svg'
 import { useCallback } from 'react'
 import { message, QRCode } from 'antd'
 import { Link } from 'react-router-dom'
-import { getLinkId } from '../../utils/getLinkId'
 import removeProtocolFromUrl from '../../utils/removePrefix'
 
-export type IProps = ILinksApiModel
+export interface IProps extends ILinksApiModel {
+  className?: string
+}
 
 export default function LinksListItem({
+    id,
     short_url,
-    original_url
+    original_url,
+    className,
 }: IProps) {
 
   const onCopyLink = useCallback(() => {
@@ -50,13 +53,15 @@ export default function LinksListItem({
   };
 
   const QrShortLink = short_url + "?utm_source=qr"
-  const detailedInfoLink = '/details/' + getLinkId(short_url)
+  const detailedInfoLink = '/details/' + id
 
   const readableShortUrl = removeProtocolFromUrl(short_url)
   const readableOriginalUrl = removeProtocolFromUrl(original_url)
 
+  const blockClassName = [styles['block'], className].filter(Boolean).join(' ');
+
   return (
-    <div className={styles['block']}>
+    <div className={blockClassName}>
       <div id="qrcode-block" className={styles['qrCode']}>
         <QRCode
           size={150}
