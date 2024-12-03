@@ -18,6 +18,7 @@ export const linksApi = createApi({
         query: (payload: IDetailsPayload) => ({
           url: `/details/${payload.link_id}`,
           method: 'GET',
+          transformResponse: (response: { data: IDetailsResponse }) => response.data,
           // body: payload
         }),
     })
