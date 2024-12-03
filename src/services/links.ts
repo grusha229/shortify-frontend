@@ -14,11 +14,11 @@ export const linksApi = createApi({
           body: payload,
         }),
       }),
-    getLinkDetails: builder.query<IDetailsResponse, IDetailsPayload>({
+    getLinkDetails: builder.query<IDetailsResponse[], IDetailsPayload>({
         query: (payload: IDetailsPayload) => ({
-          url: '/details',
+          url: `/details/${payload.link_id}`,
           method: 'GET',
-          body: payload
+          // body: payload
         }),
     })
   }),

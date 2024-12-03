@@ -8,10 +8,11 @@ export interface ILinksState {
 
 const initialState: ILinksState  = {
   links: [
-    // {
-    //   short_url: 'http://localhost/link/caN3Bf',
-    //   original_url: 'https://example.com'
-    // }
+    {
+      short_url: 'http://localhost/link/caN3Bf',
+      original_url: 'https://example.com',
+      id: 'caN3Bf'
+    }
   ],
 }
 
