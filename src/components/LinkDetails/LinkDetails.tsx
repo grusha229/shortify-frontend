@@ -9,8 +9,8 @@ export default function LinkDetails({ link_id }: IProps) {
 
   const { data: details, isLoading, isError, error } = useGetLinkDetailsQuery({ link_id: link_id });
 
-  const linkVisitsCount = !isLoading && details?.length
-  const qrCodeLinksVisitsCount = !isLoading && details?.filter((link) => link?.utm_source === 'qrcode')?.length
+  const linkVisitsCount = details?.length || 0;
+  const qrCodeLinksVisitsCount = details?.filter((link) => link?.utm_source === 'qrcode')?.length || 0;
 
   console.log(details, isLoading, isError, error)
 
