@@ -11,9 +11,14 @@
     }
 }
 
+@mixin text-ellipsis {
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .block {
     padding: 24px 24px 16px;
-    
 
     display: flex;
     flex-direction: row;
@@ -25,6 +30,11 @@
     will-change: background-color;
     transition: background-color 100ms;
     background-color: $color-background;
+
+    @media screen and (max-width: 1280px) {
+        gap: 16px;
+        flex-direction: column;
+    }
 
     &:hover {
         background-color: darken($color-background, 1.2);
@@ -40,6 +50,12 @@
 
     height: 150px;
 
+    @media screen and (max-width: 1280px) {
+        margin-left: unset;
+        flex: 1;
+        width: 100%;
+    }
+
     a {
         color: $color-text-primary;
     }
@@ -49,9 +65,21 @@
 
         max-width: 300px;
 
-        white-space: normal;
-        text-overflow: ellipsis;
-        overflow: hidden;
+        @include text-ellipsis();
+
+        @media screen and (max-width: 1280px) {
+            font-size: 24px;
+
+            max-width: unset;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+
+       a {
+            @include text-ellipsis();
+       }
 
         @include link-hover();
     }
@@ -62,15 +90,18 @@
         opacity: .5;
         max-width: 300px;
 
-        white-space: normal;
-        text-overflow: ellipsis;
-        overflow: hidden;
+        @include text-ellipsis();
 
         @include link-hover();
+
+        @media screen and (max-width: 1280px) {
+            max-width: unset;
+        }
     }
 
     &--details {
         margin-top: auto;
+        text-decoration: underline;
 
         @include link-hover();
     }
@@ -84,6 +115,18 @@
         margin-left: auto;
 
         @include link-hover();
+
+        @media screen and (max-width: 1280px) {
+            min-width: 20px;
+            min-height: 20px;
+            padding: 4px;
+            margin-left: unset;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 

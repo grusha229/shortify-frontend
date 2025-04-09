@@ -7,7 +7,7 @@ export default function Layout() {
       <div>
         <div className={style['header']}>
             <div className={style['image']}>
-                <img src={robotImg} className={style['image--content']} alt="React logo" />
+                <img src={robotImg} className={style['image--content']} alt="" />
             </div>
             <div className={style['title']}>Shortify</div>
         </div>

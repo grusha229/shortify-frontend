@@ -40,12 +40,12 @@ export default function LinkForm({
                 placeholder='Insert your link here'
                 {...register('url')}
             />
-          <button 
-            className={style['form--button']} 
-            type="submit"
-          >
-            Shortify!
-          </button>
+            <button 
+              className={style['form--button']} 
+              type="submit"
+            >
+              Shortify!
+            </button>
         </form>
       </div>
     )

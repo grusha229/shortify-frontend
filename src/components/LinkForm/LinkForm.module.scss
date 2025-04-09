@@ -9,7 +9,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    box-sizing: border-box;
     flex: 1;
+
+    @media screen and (max-width: 1280px) {
+        flex-direction: column;
+        margin: 0;
+        gap: 8px;
+    }
 
     &--input {
         font-size: 24px;
@@ -21,6 +28,13 @@
         transition: filter 400ms;
         flex: 1;
         z-index: 1;
+
+        @media screen and (max-width: 1280px) {
+            width: 100%;
+            box-sizing: border-box;
+            margin-right: unset;
+            font-size: 16px;
+        }
 
         &:focus {
             filter: drop-shadow(0 0 2em #61dafbaa);
@@ -38,8 +52,11 @@
         outline: none;
         z-index: 2;
 
+        @media screen and (max-width: 1280px) {
+            width: 100%;
+        }
         &:hover {
-            filter: drop-shadow(0 0 1.5em #61dafbaa);
+            filter: drop-shadow(3.5em 0 2em #61dafbaa);
         }
 
         &:focus {

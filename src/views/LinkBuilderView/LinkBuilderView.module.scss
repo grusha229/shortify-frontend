@@ -1,5 +1,15 @@
 .content {
     margin-top: calc(50% - 350px);
+
+    @media screen and (max-width: 1280px) {
+        margin-top: unset;
+    }
+}
+
+.title {
+    @media screen and (max-width: 1280px) {
+        font-size: 2.2em;
+    }
 }
 
 .recent-links {

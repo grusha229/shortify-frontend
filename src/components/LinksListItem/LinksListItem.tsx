@@ -5,6 +5,7 @@ import { useCallback } from 'react'
 import { message, QRCode } from 'antd'
 import { Link } from 'react-router-dom'
 import removeProtocolFromUrl from '../../utils/removePrefix'
+import { isMobile, useWindowSize } from '../../utils/responsives'
 
 export interface IProps extends ILinksApiModel {
   className?: string
@@ -21,6 +22,11 @@ export default function LinksListItem({
     navigator.clipboard.writeText(short_url)
     message.success('Link copied to clipboard')
   }, [short_url])
+
+  const {width} = useWindowSize();
+  const isMobileWidth = isMobile(width);
+
+  const QRCodeSize = isMobileWidth ? 220 : 150;
 
   function doDownload(url: string, fileName: string) {
     const a = document.createElement("a");
@@ -64,7 +70,7 @@ export default function LinksListItem({
     <div className={blockClassName}>
       <div id="qrcode-block" className={styles['qrCode']}>
         <QRCode
-          size={150}
+          size={QRCodeSize}
           value={QrShortLink}
           bgColor="#fff"
           type="svg"
@@ -83,6 +89,11 @@ export default function LinksListItem({
       </div>
       <div className={styles['link']}>
         <div className={styles['link--short']}>
+            {isMobileWidth && (
+              <div className={styles['link--icon']} onClick={onCopyLink} >
+                <img src={copyIcon} alt='' />
+              </div>
+            )}
             <a
               href={short_url}
               target='_blank'
@@ -102,9 +113,11 @@ export default function LinksListItem({
           <Link to={detailedInfoLink}>Details</Link>
         </div>
       </div>
-      <div className={styles['link--icon']} onClick={onCopyLink} >
-        <img src={copyIcon} alt='' />
-      </div>
+      {!isMobileWidth && (
+        <div className={styles['link--icon']} onClick={onCopyLink} >
+          <img src={copyIcon} alt='' />
+        </div>
+      )}
     </div>
   )
 }
